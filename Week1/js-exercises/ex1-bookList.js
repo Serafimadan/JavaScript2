@@ -16,27 +16,58 @@
 
   */
 
-function createBookList(books) {
-  // your code goes in here, return the ul element
-}
-
 const books = [{
     title: 'The Design of Everyday Things',
     author: 'Don Norman',
-    alreadyRead: false
+    alreadyRead: false,
+    picture: 'https://productdork.com/uploads/default/original/1X/ddbda1150301e89cdf0119d84f2a7fb8930beffb.png'
   },
   {
     title: 'The Most Human Human',
     author: 'Brian Christian',
-    alreadyRead: true
+    alreadyRead: true,
+    picture: 'https://picture.graycity.net/img/brian-christian/the_most_human_human.jpg'
   },
   {
     title: 'The Pragmatic Programmer',
     author: 'Andrew Hunt',
-    alreadyRead: true
+    alreadyRead: true,
+    picture: 'https://www.relativisticramblings.com/wp-content/uploads/2016/06/tpp.jpg'
   }
 ];
+
+
+function createBookList(books) {
+  // your code goes in here, return the ul element
+  let bookList = document.createElement('ul');
+  //itarate array
+  for (let i = 0; i < books.length; i++) {
+    //variables which create tags
+    let bookItem = books[i];
+    let bookLi = document.createElement('li');
+    let bookTitle = document.createElement('p');
+    let bookImg = document.createElement('img');
+    //put content to the tags
+    let textTitleAuthor = document.createTextNode(bookItem.title + ' - ' + bookItem.author);
+    let imageForBook = document.createTextNode(bookItem.picture);
+    bookList.appendChild(bookLi);
+    bookLi.appendChild(bookTitle);
+    bookTitle.appendChild(textTitleAuthor);
+    bookLi.appendChild(bookImg);
+    bookImg.src = bookItem.picture;
+    bookImg.appendChild(imageForBook);
+    //color for have read book or not
+    if (bookItem.alreadyRead == true) {
+        bookLi.style.backgroundColor = 'green';
+    } else {
+        bookLi.style.backgroundColor = 'red';
+    }
+  }
+  return bookList; 
+}
+
 
 let ulElement = createBookList(books);
 
 document.querySelector("#bookList").appendChild(ulElement);
+
