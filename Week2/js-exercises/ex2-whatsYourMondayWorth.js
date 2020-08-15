@@ -14,7 +14,16 @@
 
 function dayWorth(tasks, hourlyRate) {
   // put your code in here, the function does returns a euro formatted string
+  //use method map to get the duration time for each task in hours and get hourly pay for each task
+  const durationPaiment = mondayTasks.map(function (time) {
+    return (time.duration / 60 * hourlyRate);
+  })
+  //use method reduce to get paid for all tasks
+  let totalPaiment = durationPaiment.reduce((total, amount) => total + amount); 
+  //use method toLocaleString
+  return totalPaiment.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
 }
+
 
 const mondayTasks = [{
     name: 'Daily standup',
