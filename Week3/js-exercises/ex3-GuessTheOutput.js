@@ -19,3 +19,8 @@ const x = (function () {
 })();
 
 x();
+/** result is 12, because of we override the variable 
+inside the const x, the value of which is to the function, 
+which returns an function as a result, and displays the value of the overridden variable.
+The function has full access to external variables and can change their value.
+*/

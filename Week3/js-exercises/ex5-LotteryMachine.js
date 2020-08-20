@@ -30,9 +30,27 @@ function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
   const numbers = [];
   // make array
   // start at beginning of array and check if you should call threeCallback or fiveCallback or go on to next
-}
+  for (let i = startIndex; i <= stopIndex; i++) numbers.push(i);
+ 
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 3 === 0) {
+      threeCallback();
+    }
+    if (numbers[i] % 5 === 0) {
+      fiveCallback();
+    }
+    
+  }
+};
 
-threeFive(10, 15, sayThree, sayFive);
+function sayThree() {
+  console.log('Three');
+};
+function sayFive() {
+console.log('Five');
+};
+
+ threeFive(10, 15, sayThree, sayFive);
 
 // Should create an array [10,11,12,13,14,15]
 // and call sayFive, sayThree, sayThree, sayFive

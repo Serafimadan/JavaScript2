@@ -13,9 +13,18 @@ does not return anything but removes any duplicate elements from the array.
 
 // WRITE YOUR FUNCTION HERE
 
+function removeDuplicates(myArray) {
+  const filteredStrings = myArray.filter((item, index) => {
+    return myArray.indexOf(item) === index;
+
+  });
+  return filteredStrings;
+}
+
 const letters = ['a', 'b', 'c', 'd', 'a', 'e', 'f', 'c', 'b'];
+//get result function, remove duplicate elements
+const newLetters = removeDuplicates(letters);
 
-removeDuplicates(letter);
-
-if (letters === ['a', 'b', 'c', 'd', 'e', 'f'])
-  console.log("Hooray!")
+if (JSON.stringify(newLetters) === JSON.stringify(['a', 'b', 'c', 'd', 'e', 'f'])) {
+  console.log("Hooray!");
+}
